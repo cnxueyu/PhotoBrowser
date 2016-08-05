@@ -19,7 +19,7 @@ class HomeViewControllerLayout: UICollectionViewFlowLayout {
         
         let itemWH : CGFloat = ( UIScreen.mainScreen().bounds.width - 4 * margin ) / 3 - 0.001
         
-        
+         
         //布局
         
         itemSize = CGSize(width: itemWH, height: itemWH)

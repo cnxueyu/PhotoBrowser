@@ -128,10 +128,10 @@
 		8056804E1D54CDD800EA1679 /* PhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				805680521D54CDD800EA1679 /* PhotoBrowserVC.swift */,
 				8056804F1D54CDD800EA1679 /* PhotoBroserViewCell.swift */,
 				805680501D54CDD800EA1679 /* PhotoBrowserLayout.swift */,
 				805680511D54CDD800EA1679 /* PhotoBrowserTransition.swift */,
-				805680521D54CDD800EA1679 /* PhotoBrowserVC.swift */,
 			);
 			path = PhotoBrowser;
 			sourceTree = "<group>";

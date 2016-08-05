@@ -116,11 +116,15 @@ extension HomeViewController {
             //创建图片浏览控制器
             let photoBrowserVC = PhotoBrowserVC()
         
-        //传递数据
+        //传递数据,设置控制器相关属性
         
         photoBrowserVC.shops = shops
         
         photoBrowserVC.indexPath = indexPath
+        
+        photoBrowserTransition.presentProtocol = self
+        
+        photoBrowserTransition.indexPath = indexPath
         
         //madal方式
         
@@ -141,3 +145,50 @@ extension HomeViewController {
     
 }
 
+//MARK: - 实现photoBrowserTransition的presentProtocol方法
+extension HomeViewController : PrensentProtocol {
+    
+    func getImageView(indexPath: NSIndexPath) -> UIImageView {
+        
+      //创建imageView对象
+        
+        let imageView = UIImageView()
+        
+        let cell = collectionView?.cellForItemAtIndexPath(indexPath) as! HomeViewCell
+        
+        imageView.image = cell.imageView.image
+        
+        imageView.contentMode = .ScaleAspectFill
+        
+//        imageView.clipsToBounds = true
+        
+
+        return imageView
+        
+    }
+    
+    func getStartRect(indexPath: NSIndexPath) -> CGRect {
+        
+        let cell = collectionView?.cellForItemAtIndexPath(indexPath) as! HomeViewCell
+        
+        //将cell的frame转换成所在屏幕的frame
+        
+        let startRect = collectionView!.convertRect(cell.frame, toCoordinateSpace: UIApplication.sharedApplication().keyWindow!)
+ 
+        
+        return startRect
+  
+    }
+    
+    func getEndRect(indexPath: NSIndexPath) -> CGRect {
+       
+        let cell = collectionView?.cellForItemAtIndexPath(indexPath) as! HomeViewCell
+        
+        let image = cell.imageView.image
+        
+        
+        return calculateImageViewFrame(image!)
+    
+    }
+  
+}

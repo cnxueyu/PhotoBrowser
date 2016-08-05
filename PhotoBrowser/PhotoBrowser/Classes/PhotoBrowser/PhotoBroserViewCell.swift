@@ -50,7 +50,7 @@ class PhotoBroserViewCell: UICollectionViewCell {
                 
             }
             //根据实际图片计算imageView的frame
-          imageView.frame = calculateImageSize(image)
+          imageView.frame = calculateImageViewFrame(image)
             
             //校验大图的url是否存在
             guard let url = NSURL(string: shop.z_pic_url) else {
@@ -65,7 +65,7 @@ class PhotoBroserViewCell: UICollectionViewCell {
             imageView .sd_setImageWithURL(url, placeholderImage: image) { (image, _, _, _) -> Void in
             
             //下载大图后再次根据大图计算imageView的frame
-            self.imageView.frame = self.calculateImageSize(image)
+            self.imageView.frame = calculateImageViewFrame(image)
                 
             }
             
@@ -77,23 +77,3 @@ class PhotoBroserViewCell: UICollectionViewCell {
     
 }
 
-extension PhotoBroserViewCell {
-    
-    //MARK:- 根据下载的图片尺寸计算imageView的尺寸
-    func calculateImageSize(image : UIImage) -> CGRect {
-        
-        let imageViewW = UIScreen.mainScreen().bounds.width
-        
-        let imageViewH = imageViewW * image.size.height / image.size.width
-        
-        let x : CGFloat = 0
-        
-        let y = (UIScreen.mainScreen().bounds.height - imageViewH) * 0.5
-        
-        return CGRect(x: x, y: y, width: imageViewW, height: imageViewH)
-    
-    }
-    
-    
-    
-}
