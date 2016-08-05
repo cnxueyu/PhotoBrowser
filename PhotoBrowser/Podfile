@@ -1,0 +1,11 @@
+
+platform :ios, "8.0"
+
+pod "AFNetworking"
+pod "SDWebImage"
+
+use_frameworks!
+
+target 'PhotoBrowser' do
+  # pod 'Kiwi'
+end

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kMv-QY-Yc3">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="Nj0-qF-Hek">
+            <objects>
+                <collectionViewController id="0Wt-Sc-EKP" customClass="HomeViewController" customModule="PhotoBrowser" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="oR0-Vv-oQ1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewLayout key="collectionViewLayout" id="G9g-ZL-scK" customClass="HomeViewControllerLayout" customModule="PhotoBrowser" customModuleProvider="target"/>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCell" id="Mbn-0c-ant" customClass="HomeViewCell" customModule="PhotoBrowser" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="100" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mxf-ut-64G">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEZ-9Y-DQB">
+                                            <rect key="frame" x="0.0" y="118" width="100" height="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" red="1" green="0.22358646169999999" blue="0.095205025420000006" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="LEZ-9Y-DQB" secondAttribute="trailing" id="71n-8L-90a"/>
+                                    <constraint firstItem="Mxf-ut-64G" firstAttribute="top" secondItem="Mbn-0c-ant" secondAttribute="top" id="IBE-vj-1t5"/>
+                                    <constraint firstItem="Mxf-ut-64G" firstAttribute="top" secondItem="Mbn-0c-ant" secondAttribute="top" id="RBH-cn-mrl"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mxf-ut-64G" secondAttribute="trailing" id="YGp-HN-s0c"/>
+                                    <constraint firstItem="LEZ-9Y-DQB" firstAttribute="leading" secondItem="Mbn-0c-ant" secondAttribute="leading" id="epi-7u-L3r"/>
+                                    <constraint firstItem="Mxf-ut-64G" firstAttribute="leading" secondItem="Mbn-0c-ant" secondAttribute="leading" id="fSh-ZT-eaL"/>
+                                    <constraint firstItem="Mxf-ut-64G" firstAttribute="leading" secondItem="Mbn-0c-ant" secondAttribute="leading" id="kzi-ri-tKP"/>
+                                    <constraint firstAttribute="bottom" secondItem="LEZ-9Y-DQB" secondAttribute="bottom" id="p5M-0C-eUE"/>
+                                    <constraint firstItem="LEZ-9Y-DQB" firstAttribute="bottom" secondItem="Mxf-ut-64G" secondAttribute="bottom" constant="30" id="uEh-x9-o1r"/>
+                                </constraints>
+                                <size key="customSize" width="100" height="130"/>
+                                <connections>
+                                    <outlet property="imageView" destination="Mxf-ut-64G" id="zoF-fG-CLh"/>
+                                    <outlet property="nameLabel" destination="LEZ-9Y-DQB" id="j25-xd-E7T"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="0Wt-Sc-EKP" id="Swo-5j-yJd"/>
+                            <outlet property="delegate" destination="0Wt-Sc-EKP" id="vhH-Kq-uWn"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="5a2-7g-hcX"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TS0-jg-OSb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="326" y="282"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LNQ-H2-fAz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kMv-QY-Yc3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NJW-ZG-Ung">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0Wt-Sc-EKP" kind="relationship" relationship="rootViewController" id="O3p-O4-MFj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="if4-Os-CgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-400" y="232"/>
+        </scene>
+    </scenes>
+</document>
