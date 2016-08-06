@@ -21,6 +21,13 @@ protocol PrensentProtocol : class {
     
 }
 
+protocol DismissProtocol : class {
+    
+    func getImageView () -> UIImageView
+    
+    func getIndexPath () -> NSIndexPath
+    
+}
 
 
 class PhotoBrowserTransition: NSObject {
@@ -30,9 +37,9 @@ class PhotoBrowserTransition: NSObject {
     
     var indexPath : NSIndexPath?
     
-    weak var presentProtocol : PrensentProtocol?
+    weak var presentDelegate : PrensentProtocol?
     
-    
+    weak var dismissDelegate : DismissProtocol?
     
     
     
@@ -85,7 +92,7 @@ extension PhotoBrowserTransition : UIViewControllerAnimatedTransitioning {
         if isPresented {
             
             
-            guard let indexPath = indexPath, presentProtocol = presentProtocol else {
+            guard let indexPath = indexPath, presentDelegate = presentDelegate else {
                 
                 return
             }
@@ -96,15 +103,15 @@ extension PhotoBrowserTransition : UIViewControllerAnimatedTransitioning {
             //执行动画
               //获取执行动画的imageView
             
-            let imageView = presentProtocol.getImageView(indexPath)
+            let imageView = presentDelegate.getImageView(indexPath)
             
             //把imageView加到containerView中
             
             transitionContext.containerView()?.addSubview(imageView)
             
-            //设置动画的其实位置
+            //设置imageView的起始位置
             
-            imageView.frame = presentProtocol.getStartRect(indexPath)
+            imageView.frame = presentDelegate.getStartRect(indexPath)
             
             //从转场上下文中获取上面设置的动画时间
             let duration = transitionDuration(transitionContext)
@@ -114,9 +121,9 @@ extension PhotoBrowserTransition : UIViewControllerAnimatedTransitioning {
             
             UIView.animateWithDuration(duration, animations: { () -> Void in
                 
-                //设置动画的结束位置
+                //设置imageView的结束位置
                 
-                imageView.frame = presentProtocol.getEndRect(indexPath)
+                imageView.frame = presentDelegate.getEndRect(indexPath)
                 
                 }) { (_) -> Void in
                     
@@ -136,24 +143,60 @@ extension PhotoBrowserTransition : UIViewControllerAnimatedTransitioning {
             
         }else {
             
+            //校验nil
+            
+            guard let dismissDelegate = dismissDelegate, presentDelegate = presentDelegate else {
+                
+                return
+            }
+            
+            
             //获取消失的view
             
-        let dismissView = transitionContext.viewForKey(UITransitionContextFromViewKey)!
+        let dismissView = transitionContext.viewForKey(UITransitionContextFromViewKey)
 
-            
+//            dismissView?.removeFromSuperview()
             //获取动画的时间
             
             let duration = transitionDuration(transitionContext)
             
             //执行消失动画
+               //获取执行动画的imageView
+            
+            let imageView = dismissDelegate.getImageView()
+            
+            //将imageView加到containerView中
+            
+            transitionContext.containerView()?.addSubview(imageView)
+            
+            //取出indexPath
+            
+            let indexPath = dismissDelegate.getIndexPath()
+            
+            //获取结束位置
+            
+            let endRect = presentDelegate.getStartRect(indexPath)
+            
+            //设置dismissView的透明度
+            
+            dismissView?.alpha = endRect == CGRectZero ? 1.0 : 0.0
+            
             
             UIView .animateWithDuration(duration, animations: { () -> Void in
-                
-                dismissView.alpha = 0.0
+        
+                if endRect == CGRectZero {
+                    
+                    imageView.removeFromSuperview()
+                    
+                    dismissView?.alpha = 0.0
+                }else {
+                    
+                    imageView.frame = endRect
+                }
                 
                 }, completion: { (_) -> Void in
                     
-                    dismissView .removeFromSuperview()
+                    dismissView! .removeFromSuperview()
                     //完成动画
                     
                     transitionContext.completeTransition(true)

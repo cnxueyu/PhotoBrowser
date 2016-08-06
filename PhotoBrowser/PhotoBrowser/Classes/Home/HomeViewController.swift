@@ -122,9 +122,11 @@ extension HomeViewController {
         
         photoBrowserVC.indexPath = indexPath
         
-        photoBrowserTransition.presentProtocol = self
+        photoBrowserTransition.presentDelegate = self
         
         photoBrowserTransition.indexPath = indexPath
+        
+        photoBrowserTransition.dismissDelegate = photoBrowserVC
         
         //madal方式
         
@@ -160,7 +162,7 @@ extension HomeViewController : PrensentProtocol {
         
         imageView.contentMode = .ScaleAspectFill
         
-//        imageView.clipsToBounds = true
+        imageView.clipsToBounds = true
         
 
         return imageView
@@ -169,7 +171,10 @@ extension HomeViewController : PrensentProtocol {
     
     func getStartRect(indexPath: NSIndexPath) -> CGRect {
         
-        let cell = collectionView?.cellForItemAtIndexPath(indexPath) as! HomeViewCell
+        guard let cell = collectionView?.cellForItemAtIndexPath(indexPath) as? HomeViewCell  else {
+            
+            return CGRectZero
+        }
         
         //将cell的frame转换成所在屏幕的frame
         

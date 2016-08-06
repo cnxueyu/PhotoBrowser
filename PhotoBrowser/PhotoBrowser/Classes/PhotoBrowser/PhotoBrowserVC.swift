@@ -197,3 +197,39 @@ extension PhotoBrowserVC : UICollectionViewDataSource,UICollectionViewDelegate{
     }
     
 }
+
+
+//实现DismissProtocol代理方法
+extension PhotoBrowserVC : DismissProtocol {
+    
+    func getImageView() -> UIImageView {
+        
+        let imageView = UIImageView()
+        
+        let cell = collectionView.visibleCells().first as! PhotoBroserViewCell
+        
+        imageView.image = cell.imageView.image
+        
+        //设置imageView的frame
+        
+        imageView.frame = cell.imageView.frame
+        
+        imageView.contentMode = .ScaleAspectFill
+        
+        imageView.clipsToBounds = true
+       
+        return imageView
+        
+    }
+    
+    func getIndexPath() -> NSIndexPath {
+        
+        let cell = collectionView.visibleCells().first as! PhotoBroserViewCell
+        
+        return collectionView.indexPathForCell(cell)!
+        
+    }
+    
+}
+
+

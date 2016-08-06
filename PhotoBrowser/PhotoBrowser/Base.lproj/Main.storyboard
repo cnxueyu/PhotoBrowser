@@ -21,11 +21,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mxf-ut-64G">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mxf-ut-64G">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEZ-9Y-DQB">
-                                            <rect key="frame" x="0.0" y="118" width="100" height="12"/>
+                                            <rect key="frame" x="0.0" y="80" width="100" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="asr-Dq-nVu"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" red="1" green="0.22358646169999999" blue="0.095205025420000006" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -36,13 +39,15 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="LEZ-9Y-DQB" secondAttribute="trailing" id="71n-8L-90a"/>
                                     <constraint firstItem="Mxf-ut-64G" firstAttribute="top" secondItem="Mbn-0c-ant" secondAttribute="top" id="IBE-vj-1t5"/>
+                                    <constraint firstAttribute="trailing" secondItem="LEZ-9Y-DQB" secondAttribute="trailing" id="IWG-gd-dhK"/>
                                     <constraint firstItem="Mxf-ut-64G" firstAttribute="top" secondItem="Mbn-0c-ant" secondAttribute="top" id="RBH-cn-mrl"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mxf-ut-64G" secondAttribute="bottom" id="SYN-g5-SiH"/>
                                     <constraint firstAttribute="trailing" secondItem="Mxf-ut-64G" secondAttribute="trailing" id="YGp-HN-s0c"/>
+                                    <constraint firstItem="LEZ-9Y-DQB" firstAttribute="leading" secondItem="Mbn-0c-ant" secondAttribute="leading" id="abe-n0-P3M"/>
                                     <constraint firstItem="LEZ-9Y-DQB" firstAttribute="leading" secondItem="Mbn-0c-ant" secondAttribute="leading" id="epi-7u-L3r"/>
                                     <constraint firstItem="Mxf-ut-64G" firstAttribute="leading" secondItem="Mbn-0c-ant" secondAttribute="leading" id="fSh-ZT-eaL"/>
+                                    <constraint firstAttribute="bottom" secondItem="LEZ-9Y-DQB" secondAttribute="bottom" id="gbR-le-pRP"/>
                                     <constraint firstItem="Mxf-ut-64G" firstAttribute="leading" secondItem="Mbn-0c-ant" secondAttribute="leading" id="kzi-ri-tKP"/>
-                                    <constraint firstAttribute="bottom" secondItem="LEZ-9Y-DQB" secondAttribute="bottom" id="p5M-0C-eUE"/>
-                                    <constraint firstItem="LEZ-9Y-DQB" firstAttribute="bottom" secondItem="Mxf-ut-64G" secondAttribute="bottom" constant="30" id="uEh-x9-o1r"/>
                                 </constraints>
                                 <size key="customSize" width="100" height="130"/>
                                 <connections>
